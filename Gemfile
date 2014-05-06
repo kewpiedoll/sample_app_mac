@@ -2,10 +2,11 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
+# Hartle used 0.12.2
+gem 'pg'
 
 group :development, :test do 
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  # gem 'sqlite3'
   gem 'rspec-rails'
   gem 'guard-rspec'
 end
@@ -35,10 +36,6 @@ group :test do
 	gem 'spork', '0.9.0'
 end
 
-group :production do 
-	# Hartle used 0.12.2
-	gem 'pg'
-end
 # BELOW CAME WITH RAILS 4 AND COMMENTED OUT FOR BOOK EXAMPLE
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
  gem 'turbolinks'
