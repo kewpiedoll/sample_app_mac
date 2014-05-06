@@ -5,22 +5,18 @@ gem 'rails', '4.0.0'
 
 group :development, :test do 
   # Use sqlite3 as the database for Active Record
-  gem 'rspec-rails'
   gem 'sqlite3'
-end
-
-group :production do 
-	# Hartle used 0.12.2
-	gem 'pg'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
 end
 
 group :assets do 
   # Use SCSS for stylesheets
-  gem 'sass-rails', '~> 4.0.0' 
-  # Use Uglifier as compressor for JavaScript assets
-  gem 'uglifier', '>= 1.3.0'
+  gem 'sass-rails'
   # Use CoffeeScript for .js.coffee assets and views
-  gem 'coffee-rails', '~> 4.0.0'
+  gem 'coffee-rails'
+  # Use Uglifier as compressor for JavaScript assets
+  gem 'uglifier'
 end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -31,19 +27,31 @@ gem 'jquery-rails'
 
 # added from Hartl-pg78
 group :test do 
+	gem 'rspec-rails'
 	gem 'capybara', '1.1.2'
+	gem 'rb-fsevent', :require => false
+	gem 'growl'
+	gem 'guard-spork', '0.3.2'
+	gem 'spork', '0.9.0'
 end
 
+group :production do 
+	# Hartle used 0.12.2
+	gem 'pg'
+end
+# BELOW CAME WITH RAILS 4 AND COMMENTED OUT FOR BOOK EXAMPLE
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+# gem 'jbuilder', '~> 1.2'
 
-group :doc do
+# group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
+#  gem 'sdoc', require: false
+# end
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

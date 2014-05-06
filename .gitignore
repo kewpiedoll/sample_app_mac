@@ -14,3 +14,11 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Above, automatic from rails new, below from hartl page 119
+doc/
+*.swp
+*~
+.project
+.DS_Store
+bundler_stubs/
