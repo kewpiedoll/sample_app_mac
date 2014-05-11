@@ -1,7 +1,14 @@
-<% provide(:title, 'Home') %>
-  <h1>GreenCoin Sample App</h1>
-  <p>
-    This is the page for the GreenCoin Sample Application
-  </p>
+<div class="center hero-unit">
+  <h1>Welcome to the GreenCoin Sample App</h1>
+
+  <h2>
+    Soon we will be launching your carbon neutral life experience. 
+  </h2>
+
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+
+</div>
+
+<%= link_to image_tag("grc-logo.png", alt: "Rails"), 'http://www.co2now.org' %>
 
 

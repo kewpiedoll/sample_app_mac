@@ -1,42 +1,75 @@
 require 'spec_helper'
 
-describe "StaticPages" do
+describe "Static pages" do
 
-  describe "Home page" do
+  subject { page }
 
-    it "should have the h1 'GreenCoin Sample App'" do
-    	visit '/static_pages/home'
-    	page.should have_selector('h1', :text => 'GreenCoin Sample App')
-    end
+  describe "Home page" do 
+    before { visit root_path }
 
-    it "should have the title 'Home'" do
-    	visit '/static_pages/home'
-    	page.should have_selector('title', :text => 'GreenCoin Sample App | Home')
-    end
+    it { should have_content('GreenCoin Sample App') }
+    it { should have_title(full_title('')) }
+    it { should_not have_title('| Home') }
   end
+
+  # old version:
+  # describe "Home page" do
+
+  #   it "should have the content 'GreenCoin Sample App'" do
+  #   	visit root_path
+  #   	expect(page).to have_content('GreenCoin Sample App')
+  #   end
+
+  #   it "should have the base title" do
+  #   	visit root_path
+  #   	expect(page).to have_title("GreenCoin Sample App")
+  #   end
+
+  #   it "should not have a custom base title" do
+  #   	visit root_path
+  #   	expect(page).not_to have_title('| Home')
+  #   end
+  # end
 
   describe "Help page" do 
 
   	it "should have the h1 content 'Help'" do 
-  		visit '/static_pages/help'
-  		page.should have_selector('h1', :text => 'Help')
+  		visit help_path
+  		expect(page).to have_content('Help')
   	end
 
   	it "should have the title 'Help'" do
-    	visit '/static_pages/help'
-    	page.should have_selector('title', :text => 'GreenCoin Sample App | Help')
+    	visit help_path
+    	expect(page).to have_title('GreenCoin Sample App | Help')
     end
   end
 
   describe "About page" do 
   	it "should have the h1 content 'About us'" do 
-  		visit '/static_pages/about'
-  		page.should have_selector('h1', :text => 'About')
+  		visit about_path
+  		expect(page).to have_content('About')
   	end
 
   	it "should have the title 'About Us'" do
-    	visit '/static_pages/about'
-    	page.should have_selector('title', :text => 'GreenCoin Sample App | About')
+    	visit about_path
+    	expect(page).to have_title('GreenCoin Sample App | About')
+    end
+  end
+
+  describe "Contact page" do
+    it "should have the h1 'Contact" do 
+      visit contact_path
+      expect(page).to have_content('Contact')
+    end
+
+    it "should have the title 'Contact'" do 
+      visit contact_path
+      expect(page).to have_title("GreenCoin Sample App | Contact")
     end
   end
 end
+
+
+
+
+
