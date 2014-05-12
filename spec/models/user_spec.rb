@@ -30,6 +30,8 @@ describe User do
     it { should_not be_valid }
   end
 
+  # I wrote these specs -- anything for "system" and "init-reading" is not included
+  # in the text examples
   describe "when system is not present" do 
     before { @user.system = " " }
     it { should_not be_valid }
@@ -75,7 +77,28 @@ describe User do
     it { should_not be_valid }
   end
 
-  #depracated by authenticate additions?
+  # Kewpiedoll specific tests for system/init_reading below
+  describe "when system value is not within range" do
+    it "should be invalid" do 
+      system_values = [1000, -20, 7, 0]
+      system_values.each do |invalid_value|
+        @user.system = invalid_value 
+        expect(@user).not_to be_valid
+      end
+    end
+  end
+
+  describe "when initial meter reading is not a reasonable, positive number, or 0" do 
+    it "should not be invalid" do 
+      system_values = [-1, 1000000001]
+      system_values.each do |invalid_value|
+        @user.init_reading = invalid_value 
+        expect(@user).not_to be_valid
+      end
+    end
+  end
+  # end Kewpiedoll specific tests
+
   describe "when password is not present" do 
     before do 
       @user = User.new(name: "Example User", email: "user@example.com", password: " ",
@@ -93,7 +116,6 @@ describe User do
     before { @user.password = @user.password_confirmation = "a" * 9 }
     it { should be_invalid }
   end
-  # end depracation question
 
   describe "return value of authenticate method" do 
     before { @user.save }
