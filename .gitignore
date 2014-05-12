@@ -21,4 +21,5 @@ doc/
 *~
 .project
 .DS_Store
+notes
 bundler_stubs/
